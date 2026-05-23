@@ -3,18 +3,22 @@
 import { useState } from "react";
 import { z } from "zod";
 import { addOutageReport } from "@/lib/outages";
+import { WEATHER_CONDITIONS } from "@/types/outage";
 import toast from "react-hot-toast";
 
 const schema = z.object({
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
   hasPowerNearby: z.boolean(),
+  weatherCondition: z.enum(WEATHER_CONDITIONS),
 });
 
 export default function ReportForm() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
   const [hasPowerNearby, setHasPowerNearby] = useState(false);
+  const [weatherCondition, setWeatherCondition] =
+    useState<(typeof WEATHER_CONDITIONS)[number]>("clear");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -24,6 +28,7 @@ export default function ReportForm() {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
       hasPowerNearby,
+      weatherCondition,
     });
 
     if (!parsed.success) {
@@ -38,6 +43,7 @@ export default function ReportForm() {
       setLat("");
       setLng("");
       setHasPowerNearby(false);
+      setWeatherCondition("clear");
     } catch {
       toast.error("Failed to submit report.");
     } finally {
@@ -82,6 +88,23 @@ export default function ReportForm() {
           onChange={(e) => setHasPowerNearby(e.target.checked)}
         />
         Power available nearby?
+      </label>
+
+      <label className="flex flex-col gap-1 text-sm">
+        Weather condition
+        <select
+          value={weatherCondition}
+          onChange={(e) =>
+            setWeatherCondition(e.target.value as (typeof WEATHER_CONDITIONS)[number])
+          }
+          className="rounded border px-2 py-1"
+        >
+          {WEATHER_CONDITIONS.map((condition) => (
+            <option key={condition} value={condition}>
+              {condition.charAt(0).toUpperCase() + condition.slice(1)}
+            </option>
+          ))}
+        </select>
       </label>
 
       <button
