@@ -7,7 +7,7 @@ import { useOutages } from "@/hooks/useOutages";
 import OutageMarker from "@/components/OutageMarker";
 import type { OutageReport } from "@/types/outage";
 
-const INITIAL_VIEW = { latitude: 37.7749, longitude: -122.4194, zoom: 10 };
+const INITIAL_VIEW = { latitude: 18.2208, longitude: -66.5901, zoom: 8 };
 
 export default function MapView() {
   const { outages, loading } = useOutages();
@@ -27,7 +27,7 @@ export default function MapView() {
       <Map
         initialViewState={INITIAL_VIEW}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="https://tiles.openfreemap.org/styles/liberty"
+        mapStyle="https://demotiles.maplibre.org/style.json"
       >
         {outages.map((report) => (
           <OutageMarker
@@ -46,6 +46,9 @@ export default function MapView() {
           </p>
           <p className="text-xs text-gray-500">
             Confirmations: {selected.confirmations}
+          </p>
+          <p className="text-xs text-gray-500">
+            Weather: {selected.weatherCondition ?? "Unknown"}
           </p>
           <button
             onClick={() => setSelected(null)}
