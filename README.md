@@ -177,3 +177,81 @@ Enable opt-in participation for users willing to share access to utility resourc
 * UI is responsive on mobile and desktop
 
 ---
+
+# 🚀 Brand Starter Kit (Next Release)
+
+## Positioning
+
+Community-powered utility intelligence for Puerto Rico, built for faster local awareness and safer response during power and water outages.
+
+## Name Shortlist
+
+* Luz y Agua PR
+* BarrioGrid
+* Alerta Servicios PR
+* Pulso PR
+
+## Tagline Options
+
+* Know outages first. Help neighbors faster.
+* Community-powered utility alerts for Puerto Rico.
+* La red comunitaria para luz y agua en tiempo real.
+
+## Messaging Hierarchy
+
+### Hero
+
+* EN: Real-time power and water outage tracking for Puerto Rico.
+* ES: Monitoreo en tiempo real de interrupciones de energia y agua en Puerto Rico.
+
+### Supporting Copy
+
+* EN: Report outages in seconds, confirm local conditions, and help your community respond faster.
+* ES: Reporta interrupciones en segundos, confirma condiciones locales y ayuda a tu comunidad a responder mas rapido.
+
+### Call to Action
+
+* EN: Report an Outage
+* ES: Reportar Interrupcion
+
+## Visual Direction
+
+### Brand Colors
+
+* Power: `#E4572E` (warm outage alert)
+* Water: `#118AB2` (service/water status)
+* Trust Neutral: `#1F2937` (primary text)
+* Surface: `#F8FAFC` (background)
+
+### Typography
+
+* Headline: bold, human sans-serif for urgency and clarity
+* Body: high-legibility sans-serif for maps/forms and multilingual readability
+
+### Iconography
+
+* Power: bolt symbol
+* Water: droplet symbol
+* Use shape + color together for accessibility
+
+## Voice and Tone
+
+* Calm and action-oriented under stress
+* Community-first and practical
+* Bilingual parity with natural phrasing (not literal-only translation)
+
+## Trust Signals
+
+* Confirmation counts visible on map markers and report cards
+* Last-updated timestamps on active incidents
+* Clear privacy language for optional contact fields
+* Public explanation of how crowdsourced data is validated
+
+## Release Asset Checklist
+
+* Final logo lockup (icon + wordmark)
+* EN/ES landing headline and supporting copy
+* Social announcement kit (10 templates)
+* One-page partner brief for municipalities and NGOs
+* In-app trust panel (privacy + data use summary)
+
