@@ -2,7 +2,7 @@
 
 ## Overview
 
-Smart Power Outage Tracker is a real-time, crowdsourced platform that helps users report, track, and respond to power outages in their area. It combines live mapping, community validation, and optional power availability signals to improve situational awareness during outages.
+Smart Utility Outage Tracker is a real-time, crowdsourced platform that helps users report, track, and respond to utility outages (power and water) in their area. It combines live mapping, community validation, and optional service availability signals to improve situational awareness during outages.
 
 ## Target Users
 
@@ -15,7 +15,7 @@ Smart Power Outage Tracker is a real-time, crowdsourced platform that helps user
 
 * Faster awareness than utility companies
 * Community-verified outage accuracy
-* Visibility into nearby power availability
+* Visibility into nearby service availability
 
 ---
 
@@ -23,27 +23,27 @@ Smart Power Outage Tracker is a real-time, crowdsourced platform that helps user
 
 ## Epic 1: Outage Reporting
 
-Enable users to quickly report a power outage from their current location.
+Enable users to quickly report a power or water outage from their current location.
 
 ## Epic 2: Real-Time Map Visualization
 
-Display outages dynamically on a map with clustering and status indicators.
+Display outages dynamically on a map with clustering and status indicators. Distinguish between different utility types with color-coded markers.
 
 ## Epic 3: Community Validation
 
 Allow users to confirm or dispute outage reports to improve accuracy.
 
-## Epic 4: Power Availability Signal
+## Epic 4: Service Availability Signal
 
-Let users indicate whether they currently have power to help others nearby.
+Let users indicate whether they currently have access to the utility service to help others nearby.
 
 ## Epic 5: Notifications & Updates (Phase 2)
 
 Notify users about outages and restoration updates in their area.
 
-## Epic 6: Advanced Power Sharing Network (Phase 3)
+## Epic 6: Advanced Utility Sharing Network (Phase 3)
 
-Enable opt-in participation for users willing to share access to power resources.
+Enable opt-in participation for users willing to share access to utility resources.
 
 ---
 
@@ -53,6 +53,7 @@ Enable opt-in participation for users willing to share access to power resources
 
 ### 1. Report Outage
 
+* Select outage type (Power or Water)
 * Capture user geolocation (lat/lng)
 * Submit outage report with timestamp
 * Store in database
@@ -60,8 +61,9 @@ Enable opt-in participation for users willing to share access to power resources
 ### 2. View Outages on Map
 
 * Interactive map (Leaflet/Mapbox)
-* Markers for each outage
+* Color-coded markers for each outage type (red for power, blue for water)
 * Cluster nearby reports
+* Real-time updates
 
 ### 3. Confirm Outage
 
@@ -69,12 +71,12 @@ Enable opt-in participation for users willing to share access to power resources
 * Increment confirmation count
 * Improve reliability scoring
 
-### 4. Power Status Toggle
+### 4. Service Status Toggle
 
 * Users can mark:
 
-  * “No Power”
-  * “I Have Power”
+  * "No Service"
+  * "I Have Service"
 * Helps visualize affected vs unaffected areas
 
 ---
@@ -94,6 +96,7 @@ Enable opt-in participation for users willing to share access to power resources
 ### 7. Utility API Integration
 
 * Sync with official outage data (if available)
+* Support multiple utility providers
 
 ---
 
