@@ -255,3 +255,31 @@ Community-powered utility intelligence for Puerto Rico, built for faster local a
 * One-page partner brief for municipalities and NGOs
 * In-app trust panel (privacy + data use summary)
 
+## Map Stack Recommendation (Next Release)
+
+### Recommended Stack
+
+* MapTiler + MapLibre (production map tiles + existing map renderer)
+
+### Why This Is Recommended
+
+* Minimal migration risk because current map components already use MapLibre
+* Better production reliability than demo tiles
+* Strong visual quality and performance for mobile and desktop
+* Lower vendor lock-in than a full platform switch
+
+### Implementation Notes
+
+* Replace demo map style URL with MapTiler style URL from environment variables
+* Add fallback map style handling if tile provider is unavailable
+* Keep Puerto Rico-centered default viewport and optimize labels for local readability
+* Validate marker rendering, clustering behavior, and bilingual map labels after migration
+
+### Release Checklist
+
+* Provision MapTiler project and API key
+* Configure environment variables for development and production
+* Load-test map usage under outage spike scenarios
+* Confirm attribution and provider usage terms
+* Add monitoring for tile failures and response latency
+
