@@ -18,9 +18,9 @@ export default function Home() {
   const { t } = useI18n();
 
   return (
-    <main className="min-h-screen px-4 py-4 sm:px-6 lg:px-8">
-      <div className="mx-auto flex min-h-[calc(100vh-2rem)] max-w-7xl flex-col overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_30px_70px_rgba(18,42,60,0.12)] backdrop-blur">
-        <header className="flex items-center justify-between gap-4 border-b border-[color:var(--border)] bg-[linear-gradient(90deg,rgba(21,58,99,0.97)_0%,rgba(21,58,99,0.94)_58%,rgba(37,120,168,0.9)_100%)] px-4 py-4 text-white sm:px-6">
+    <main className="flex h-screen flex-col overflow-hidden bg-transparent px-4 pb-4 pt-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-full w-full max-w-7xl flex-col overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_30px_70px_rgba(18,42,60,0.12)] backdrop-blur">
+        <header className="flex shrink-0 items-center justify-between gap-4 border-b border-[color:var(--border)] bg-[linear-gradient(90deg,rgba(21,58,99,0.97)_0%,rgba(21,58,99,0.94)_58%,rgba(37,120,168,0.9)_100%)] px-4 py-4 text-white sm:px-6">
           <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.24em] text-white/70">Puerto Rico</p>
             <h1 className="truncate text-lg font-semibold sm:text-xl">{t("appTitle")}</h1>
