@@ -9,7 +9,7 @@ export default function LanguageToggle() {
     <button
       type="button"
       onClick={() => setLanguage(language === "en" ? "es" : "en")}
-      className="rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100"
+      className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-white/18"
       title={language === "en" ? t("switchToSpanish") : t("switchToEnglish")}
       aria-label={t("language")}
     >

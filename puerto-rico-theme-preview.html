@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puerto Rico Theme Preview</title>
+  <style>
+    :root {
+      --sky: #d9eef9;
+      --sea: #1b7ea5;
+      --sea-deep: #114f73;
+      --sun: #f4c542;
+      --coral: #d83c3c;
+      --sand: #f2dfb2;
+      --navy: #133b63;
+      --ink: #123042;
+      --surface: rgba(255, 255, 255, 0.86);
+      --border: rgba(18, 48, 66, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 14%, rgba(244, 197, 66, 0.95), rgba(244, 197, 66, 0) 18%),
+        radial-gradient(circle at 84% 13%, rgba(27, 126, 165, 0.3), rgba(27, 126, 165, 0) 24%),
+        radial-gradient(circle at 78% 84%, rgba(216, 60, 60, 0.16), rgba(216, 60, 60, 0) 26%),
+        linear-gradient(135deg, #f7f0e1 0%, #dceff8 34%, #b8ddee 68%, #f9e3c5 100%);
+      overflow: hidden;
+    }
+
+    .scene {
+      position: relative;
+      min-height: 100vh;
+      padding: 32px;
+      display: grid;
+      place-items: center;
+    }
+
+    .scene::before,
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .scene::before {
+      width: 320px;
+      height: 320px;
+      top: -80px;
+      right: -40px;
+      background: rgba(244, 197, 66, 0.42);
+    }
+
+    .scene::after {
+      width: 420px;
+      height: 420px;
+      left: -120px;
+      bottom: -140px;
+      background: rgba(27, 126, 165, 0.24);
+    }
+
+    .card {
+      position: relative;
+      width: min(1100px, 100%);
+      min-height: 680px;
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.80));
+      box-shadow: 0 30px 80px rgba(13, 42, 58, 0.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(18, 48, 66, 0.1);
+      background: linear-gradient(90deg, rgba(19, 59, 99, 0.08), rgba(216, 60, 60, 0.08) 52%, rgba(244, 197, 66, 0.1));
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--navy), var(--sea-deep));
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 12px 24px rgba(19, 59, 99, 0.24);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      margin: 2px 0 0;
+      color: rgba(18, 48, 66, 0.68);
+      font-size: 0.92rem;
+    }
+
+    .pill {
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(18, 48, 66, 0.12);
+      font-size: 0.9rem;
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pill::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(19, 59, 99, 0.12) 0 36%, rgba(216, 60, 60, 0.12) 36% 68%, rgba(244, 197, 66, 0.16) 68% 100%);
+      pointer-events: none;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: calc(680px - 92px);
+    }
+
+    .map-shell {
+      position: relative;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+    }
+
+    .map {
+      position: relative;
+      height: 100%;
+      min-height: 560px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(18, 48, 66, 0.12);
+      background:
+        linear-gradient(180deg, rgba(27, 126, 165, 0.2), rgba(27, 126, 165, 0.04)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 2px, transparent 2px 60px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 60px),
+        linear-gradient(135deg, #c9ecf8 0%, #7fc7e1 48%, #52a9ca 100%);
+    }
+
+    .island {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 420px;
+      height: 140px;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      background: linear-gradient(180deg, #f6dfb2 0%, #e1b86d 54%, #b57939 100%);
+      border-radius: 72px 120px 88px 110px;
+      filter: drop-shadow(0 18px 24px rgba(19, 59, 99, 0.22));
+      border: 2px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .island::before {
+      content: "";
+      position: absolute;
+      inset: 18px 24px 22px 24px;
+      border-radius: 54px 90px 62px 88px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.06));
+      opacity: 0.9;
+    }
+
+    .marker {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 8px rgba(255,255,255,0.16), 0 10px 18px rgba(0,0,0,0.16);
+    }
+
+    .marker.power { background: var(--coral); left: 56%; top: 40%; }
+    .marker.water { background: var(--sea); left: 41%; top: 58%; }
+    .marker.alert { background: var(--sun); left: 70%; top: 50%; }
+
+    .marker::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--ink);
+      font-size: 0.75rem;
+      border: 1px solid rgba(18, 48, 66, 0.1);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .panel {
+      padding: 24px 24px 24px 0;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+      height: 100%;
+      align-content: start;
+      padding-right: 24px;
+    }
+
+    .surface {
+      border-radius: 24px;
+      border: 1px solid rgba(18, 48, 66, 0.12);
+      background: var(--surface);
+      box-shadow: 0 16px 32px rgba(13, 42, 58, 0.08);
+      padding: 18px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 10px;
+      background:
+        linear-gradient(135deg, rgba(19, 59, 99, 0.11), rgba(216, 60, 60, 0.09) 58%, rgba(244, 197, 66, 0.13));
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .hero-copy {
+      margin: 0;
+      color: rgba(18, 48, 66, 0.74);
+      max-width: 34ch;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(18, 48, 66, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--coral), var(--sun));
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(18, 48, 66, 0.08);
+      font-size: 0.93rem;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      flex: none;
+    }
+
+    .swatch.sun { background: var(--sun); }
+    .swatch.coral { background: var(--coral); }
+    .swatch.sea { background: var(--sea); }
+
+    .footer-note {
+      color: rgba(18, 48, 66, 0.58);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 920px) {
+      body { overflow: auto; }
+      .scene { padding: 16px; }
+      .card { min-height: auto; }
+      .content { grid-template-columns: 1fr; }
+      .panel { padding: 0 24px 24px; }
+      .map { min-height: 460px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <section class="card" aria-label="Puerto Rico theme rendering example">
+      <div class="topbar">
+        <div class="brand">
+          <div class="badge">PR</div>
+          <div>
+            <h1>Power Outage Tracker</h1>
+            <p class="subtitle">Puerto Rico background theme concept</p>
+          </div>
+        </div>
+        <div class="pill">Community-powered utility intelligence</div>
+      </div>
+
+      <div class="content">
+        <div class="map-shell">
+          <div class="map">
+            <div class="island" aria-hidden="true"></div>
+            <div class="marker power" data-label="Power outage" aria-hidden="true"></div>
+            <div class="marker water" data-label="Water status" aria-hidden="true"></div>
+            <div class="marker alert" data-label="High confidence" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="stack">
+            <div class="surface hero">
+              <h2 class="hero-title">Real-time alerts for Puerto Rico.</h2>
+              <p class="hero-copy">A warm coastal background, soft sunlit gradients, and calm glass surfaces keep the map readable while giving the UI a local identity.</p>
+            </div>
+
+            <div class="surface stats">
+              <div class="stat"><strong>32</strong><span>reports active</span></div>
+              <div class="stat"><strong>14</strong><span>confirmed nearby</span></div>
+              <div class="stat"><strong>91%</strong><span>confidence</span></div>
+            </div>
+
+            <div class="surface legend">
+              <div class="legend-row"><span><span class="swatch coral"></span> Power outage</span><span>Warm coral accent</span></div>
+              <div class="legend-row"><span><span class="swatch sea"></span> Water and map tone</span><span>Coastal blue base</span></div>
+              <div class="legend-row"><span><span class="swatch sun"></span> Background light</span><span>Sunlit highlight</span></div>
+            </div>
+
+            <div class="footer-note">
+              This is a visual mockup only. The map remains neutral so outage markers stay prominent and accessible.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

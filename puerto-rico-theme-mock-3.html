@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puerto Rico Theme Mock 3</title>
+  <style>
+    :root {
+      --bg: #eef4f7;
+      --panel: rgba(255, 255, 255, 0.8);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --ink: #163047;
+      --muted: #5f7384;
+      --line: rgba(22, 48, 71, 0.1);
+      --navy: #153a63;
+      --sea: #2578a8;
+      --sea-soft: #8ed0ea;
+      --sand: #f2ddad;
+      --red: #cf4444;
+      --gold: #ebb84b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(235, 184, 75, 0.24), rgba(235, 184, 75, 0) 18%),
+        radial-gradient(circle at 88% 10%, rgba(37, 120, 168, 0.18), rgba(37, 120, 168, 0) 22%),
+        radial-gradient(circle at 82% 85%, rgba(207, 68, 68, 0.1), rgba(207, 68, 68, 0) 24%),
+        linear-gradient(180deg, #f8fbfc 0%, var(--bg) 100%);
+      overflow-x: hidden;
+    }
+
+    .frame {
+      min-height: 100vh;
+      padding: 28px;
+      display: grid;
+      place-items: center;
+    }
+
+    .shell {
+      width: min(1240px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 70px rgba(18, 42, 60, 0.12);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 28px;
+      background:
+        linear-gradient(90deg, rgba(21, 58, 99, 0.97) 0%, rgba(21, 58, 99, 0.94) 58%, rgba(37, 120, 168, 0.9) 100%);
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.2;
+    }
+
+    .sub {
+      margin: 4px 0 0;
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      min-height: 720px;
+    }
+
+    .map-side {
+      padding: 24px;
+    }
+
+    .map-card {
+      position: relative;
+      height: 100%;
+      min-height: 640px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(22, 48, 71, 0.1);
+      background:
+        linear-gradient(180deg, rgba(142, 208, 234, 0.95), rgba(96, 176, 210, 0.92) 45%, rgba(55, 145, 186, 0.92) 100%);
+    }
+
+    .map-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 2px, transparent 2px 100px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 100px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .coast {
+      position: absolute;
+      left: 50%;
+      top: 56%;
+      width: 540px;
+      height: 170px;
+      transform: translate(-50%, -50%) rotate(-7deg);
+      border-radius: 100px;
+      background: linear-gradient(180deg, #f6e2b7 0%, #e4bb74 55%, #b57939 100%);
+      box-shadow: 0 20px 30px rgba(12, 35, 52, 0.18);
+      border: 2px solid rgba(255,255,255,0.18);
+    }
+
+    .coast::before {
+      content: "";
+      position: absolute;
+      inset: 18px 26px 20px;
+      border-radius: 84px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.08));
+      opacity: 0.9;
+    }
+
+    .incident {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+    }
+
+    .pin {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      box-shadow: 0 0 0 10px rgba(255,255,255,0.12), 0 10px 18px rgba(0,0,0,0.16);
+    }
+
+    .pin.red { background: var(--red); }
+    .pin.blue { background: var(--sea); }
+    .pin.gold { background: var(--gold); }
+
+    .label {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.56rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(22, 48, 71, 0.08);
+      box-shadow: 0 10px 20px rgba(9, 24, 38, 0.08);
+      color: var(--ink);
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+
+    .pin-wrap {
+      position: relative;
+      width: 20px;
+      height: 20px;
+    }
+
+    .pin-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .incident.power { left: 56%; top: 37%; }
+    .incident.water { left: 42%; top: 63%; }
+    .incident.confidence { left: 71%; top: 53%; }
+
+    .sidebar {
+      padding: 24px 24px 24px 0;
+    }
+
+    .stack {
+      height: 100%;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      padding-right: 24px;
+    }
+
+    .panel {
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      box-shadow: 0 14px 28px rgba(20, 44, 60, 0.06);
+      padding: 18px;
+    }
+
+    .hero {
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(21, 58, 99, 0.06), rgba(37, 120, 168, 0.05) 65%, rgba(235, 184, 75, 0.08));
+    }
+
+    .hero h2 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+      line-height: 1.04;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 34ch;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(22, 48, 71, 0.08);
+      padding: 14px;
+    }
+
+    .metric::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--sea), var(--red), var(--gold));
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(22, 48, 71, 0.08);
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: none;
+    }
+
+    .dot.red { background: var(--red); }
+    .dot.blue { background: var(--sea); }
+    .dot.gold { background: var(--gold); }
+
+    .foot {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 940px) {
+      .frame { padding: 16px; }
+      .body { grid-template-columns: 1fr; }
+      .sidebar { padding: 0 24px 24px; }
+      .map-card { min-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <section class="shell" aria-label="Puerto Rico theme concept 3">
+      <header class="top">
+        <div class="brand">
+          <div class="mark">PR</div>
+          <div>
+            <h1>Utility Outage Tracker</h1>
+            <p class="sub">Map-first Puerto Rico-inspired concept</p>
+          </div>
+        </div>
+        <div class="chip-row">
+          <div class="chip">Island coverage</div>
+          <div class="chip">Community reports</div>
+          <div class="chip">Live status</div>
+        </div>
+      </header>
+
+      <div class="body">
+        <div class="map-side">
+          <div class="map-card">
+            <div class="coast" aria-hidden="true"></div>
+            <div class="incident power" aria-hidden="true">
+              <div class="pin-wrap"><div class="pin red"></div></div>
+              <div class="label">Power outage</div>
+            </div>
+            <div class="incident water" aria-hidden="true">
+              <div class="pin-wrap"><div class="pin blue"></div></div>
+              <div class="label">Water status</div>
+            </div>
+            <div class="incident confidence" aria-hidden="true">
+              <div class="pin-wrap"><div class="pin gold"></div></div>
+              <div class="label">High confidence</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="stack">
+            <div class="panel hero">
+              <h2>Quiet, civic, and map-first.</h2>
+              <p>This version uses Puerto Rico colors as accents instead of the main event, so the background supports the map instead of competing with it.</p>
+            </div>
+
+            <div class="panel metrics">
+              <div class="metric"><strong>28</strong><span>active reports</span></div>
+              <div class="metric"><strong>16</strong><span>confirmed</span></div>
+              <div class="metric"><strong>89%</strong><span>confidence</span></div>
+            </div>
+
+            <div class="panel legend">
+              <div class="legend-row"><span class="tag"><span class="dot red"></span>Alert red</span><span>Used sparingly</span></div>
+              <div class="legend-row"><span class="tag"><span class="dot blue"></span>Ocean blue</span><span>Main accent</span></div>
+              <div class="legend-row"><span class="tag"><span class="dot gold"></span>Sun gold</span><span>Soft highlight</span></div>
+            </div>
+
+            <div class="foot">This direction keeps the app readable for stress use while still feeling tied to the island and local identity.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
