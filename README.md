@@ -2,7 +2,7 @@
 
 ## Overview
 
-Smart Power Outage Tracker is a real-time, crowdsourced platform that helps users report, track, and respond to power outages in their area. It combines live mapping, community validation, and optional power availability signals to improve situational awareness during outages.
+Smart Utility Outage Tracker is a real-time, crowdsourced platform that helps users report, track, and respond to utility outages (power and water) in their area. It combines live mapping, community validation, and optional service availability signals to improve situational awareness during outages.
 
 ## Target Users
 
@@ -15,7 +15,7 @@ Smart Power Outage Tracker is a real-time, crowdsourced platform that helps user
 
 * Faster awareness than utility companies
 * Community-verified outage accuracy
-* Visibility into nearby power availability
+* Visibility into nearby service availability
 
 ---
 
@@ -23,27 +23,27 @@ Smart Power Outage Tracker is a real-time, crowdsourced platform that helps user
 
 ## Epic 1: Outage Reporting
 
-Enable users to quickly report a power outage from their current location.
+Enable users to quickly report a power or water outage from their current location.
 
 ## Epic 2: Real-Time Map Visualization
 
-Display outages dynamically on a map with clustering and status indicators.
+Display outages dynamically on a map with clustering and status indicators. Distinguish between different utility types with color-coded markers.
 
 ## Epic 3: Community Validation
 
 Allow users to confirm or dispute outage reports to improve accuracy.
 
-## Epic 4: Power Availability Signal
+## Epic 4: Service Availability Signal
 
-Let users indicate whether they currently have power to help others nearby.
+Let users indicate whether they currently have access to the utility service to help others nearby.
 
 ## Epic 5: Notifications & Updates (Phase 2)
 
 Notify users about outages and restoration updates in their area.
 
-## Epic 6: Advanced Power Sharing Network (Phase 3)
+## Epic 6: Advanced Utility Sharing Network (Phase 3)
 
-Enable opt-in participation for users willing to share access to power resources.
+Enable opt-in participation for users willing to share access to utility resources.
 
 ---
 
@@ -53,6 +53,7 @@ Enable opt-in participation for users willing to share access to power resources
 
 ### 1. Report Outage
 
+* Select outage type (Power or Water)
 * Capture user geolocation (lat/lng)
 * Submit outage report with timestamp
 * Store in database
@@ -60,8 +61,9 @@ Enable opt-in participation for users willing to share access to power resources
 ### 2. View Outages on Map
 
 * Interactive map (Leaflet/Mapbox)
-* Markers for each outage
+* Color-coded markers for each outage type (red for power, blue for water)
 * Cluster nearby reports
+* Real-time updates
 
 ### 3. Confirm Outage
 
@@ -69,12 +71,12 @@ Enable opt-in participation for users willing to share access to power resources
 * Increment confirmation count
 * Improve reliability scoring
 
-### 4. Power Status Toggle
+### 4. Service Status Toggle
 
 * Users can mark:
 
-  * “No Power”
-  * “I Have Power”
+  * "No Service"
+  * "I Have Service"
 * Helps visualize affected vs unaffected areas
 
 ---
@@ -94,6 +96,7 @@ Enable opt-in participation for users willing to share access to power resources
 ### 7. Utility API Integration
 
 * Sync with official outage data (if available)
+* Support multiple utility providers
 
 ---
 
@@ -174,3 +177,109 @@ Enable opt-in participation for users willing to share access to power resources
 * UI is responsive on mobile and desktop
 
 ---
+
+# 🚀 Brand Starter Kit (Next Release)
+
+## Positioning
+
+Community-powered utility intelligence for Puerto Rico, built for faster local awareness and safer response during power and water outages.
+
+## Name Shortlist
+
+* Luz y Agua PR
+* BarrioGrid
+* Alerta Servicios PR
+* Pulso PR
+
+## Tagline Options
+
+* Know outages first. Help neighbors faster.
+* Community-powered utility alerts for Puerto Rico.
+* La red comunitaria para luz y agua en tiempo real.
+
+## Messaging Hierarchy
+
+### Hero
+
+* EN: Real-time power and water outage tracking for Puerto Rico.
+* ES: Monitoreo en tiempo real de interrupciones de energia y agua en Puerto Rico.
+
+### Supporting Copy
+
+* EN: Report outages in seconds, confirm local conditions, and help your community respond faster.
+* ES: Reporta interrupciones en segundos, confirma condiciones locales y ayuda a tu comunidad a responder mas rapido.
+
+### Call to Action
+
+* EN: Report an Outage
+* ES: Reportar Interrupcion
+
+## Visual Direction
+
+### Brand Colors
+
+* Power: `#E4572E` (warm outage alert)
+* Water: `#118AB2` (service/water status)
+* Trust Neutral: `#1F2937` (primary text)
+* Surface: `#F8FAFC` (background)
+
+### Typography
+
+* Headline: bold, human sans-serif for urgency and clarity
+* Body: high-legibility sans-serif for maps/forms and multilingual readability
+
+### Iconography
+
+* Power: bolt symbol
+* Water: droplet symbol
+* Use shape + color together for accessibility
+
+## Voice and Tone
+
+* Calm and action-oriented under stress
+* Community-first and practical
+* Bilingual parity with natural phrasing (not literal-only translation)
+
+## Trust Signals
+
+* Confirmation counts visible on map markers and report cards
+* Last-updated timestamps on active incidents
+* Clear privacy language for optional contact fields
+* Public explanation of how crowdsourced data is validated
+
+## Release Asset Checklist
+
+* Final logo lockup (icon + wordmark)
+* EN/ES landing headline and supporting copy
+* Social announcement kit (10 templates)
+* One-page partner brief for municipalities and NGOs
+* In-app trust panel (privacy + data use summary)
+
+## Map Stack Recommendation (Next Release)
+
+### Recommended Stack
+
+* MapTiler + MapLibre (production map tiles + existing map renderer)
+
+### Why This Is Recommended
+
+* Minimal migration risk because current map components already use MapLibre
+* Better production reliability than demo tiles
+* Strong visual quality and performance for mobile and desktop
+* Lower vendor lock-in than a full platform switch
+
+### Implementation Notes
+
+* Replace demo map style URL with MapTiler style URL from environment variables
+* Add fallback map style handling if tile provider is unavailable
+* Keep Puerto Rico-centered default viewport and optimize labels for local readability
+* Validate marker rendering, clustering behavior, and bilingual map labels after migration
+
+### Release Checklist
+
+* Provision MapTiler project and API key
+* Configure environment variables for development and production
+* Load-test map usage under outage spike scenarios
+* Confirm attribution and provider usage terms
+* Add monitoring for tile failures and response latency
+

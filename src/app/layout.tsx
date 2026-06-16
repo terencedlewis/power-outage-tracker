@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import MobileLanguagePill from "@/components/MobileLanguagePill";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Power Outage Tracker",
-  description: "Real-time community power outage reporting",
+  title: "Utility Outage Tracker",
+  description: "Real-time community utility outage reporting",
 };
 
 export default function RootLayout({
@@ -28,9 +30,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        {children}
-        <Toaster position="top-right" />
+      <body className="min-h-full flex flex-col text-[color:var(--foreground)]">
+        <LanguageProvider>
+          {children}
+          <MobileLanguagePill />
+          <Toaster position="top-right" />
+        </LanguageProvider>
       </body>
     </html>
   );
