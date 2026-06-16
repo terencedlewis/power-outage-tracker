@@ -58,7 +58,7 @@ const en = {
   language: "Language",
   switchToEnglish: "Switch to English",
   switchToSpanish: "Switch to Spanish",
-} as const;
+};
 
 const es: typeof en = {
   appTitle: "Rastreador de Interrupciones de Servicios",
